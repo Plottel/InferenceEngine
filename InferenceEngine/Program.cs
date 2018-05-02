@@ -22,6 +22,14 @@ namespace InferenceEngine
             Console.WriteLine("Query:");
             Console.WriteLine(input.queryClause);
 
+            var kb = new KnowledgeBase();
+
+            foreach (var clause in input.knowledgeClauses) {
+                kb.Tell(clause);
+            }
+
+            kb.Print();
+
             Console.ReadLine();
         }
     }
