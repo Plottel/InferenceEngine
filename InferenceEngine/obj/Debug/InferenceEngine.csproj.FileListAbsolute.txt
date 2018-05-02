@@ -1,0 +1,7 @@
+C:\Users\mattn\Desktop\InferenceEngine\InferenceEngine\bin\Debug\InferenceEngine.exe.config
+C:\Users\mattn\Desktop\InferenceEngine\InferenceEngine\bin\Debug\InferenceEngine.exe
+C:\Users\mattn\Desktop\InferenceEngine\InferenceEngine\bin\Debug\InferenceEngine.pdb
+C:\Users\mattn\Desktop\InferenceEngine\InferenceEngine\obj\Debug\InferenceEngine.csprojResolveAssemblyReference.cache
+C:\Users\mattn\Desktop\InferenceEngine\InferenceEngine\obj\Debug\InferenceEngine.csproj.CoreCompileInputs.cache
+C:\Users\mattn\Desktop\InferenceEngine\InferenceEngine\obj\Debug\InferenceEngine.exe
+C:\Users\mattn\Desktop\InferenceEngine\InferenceEngine\obj\Debug\InferenceEngine.pdb
