@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clause.cs" />
+    <Compile Include="Sentence.cs" />
     <Compile Include="InferenceInput.cs" />
     <Compile Include="KnowledgeBase.cs" />
     <Compile Include="Parser.cs" />

@@ -8,12 +8,12 @@ namespace InferenceEngine
 {
     public class KnowledgeBase
     {
-        private List<Clause> _knowledgeClauses = 
-            new List<Clause>();
+        private List<Sentence> _knowledgeClauses = 
+            new List<Sentence>();
 
         public void Tell(string clauseString)
         {
-            _knowledgeClauses.Add(new Clause(clauseString));
+            _knowledgeClauses.Add(new Sentence(clauseString));
         }
 
         public void Ask(string clauseString)
