@@ -22,6 +22,10 @@ namespace InferenceEngine
 
             kb.Ask(input.queryClause, "TT");
 
+            foreach (var symbol in kb.Symbols.Values) {
+                kb.Ask(symbol.Name, "BC");
+            }
+
             Console.ReadLine();
         }
     }

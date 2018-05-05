@@ -15,6 +15,12 @@ namespace InferenceEngine
         private bool _isKnown = false;
 
         public bool IsKnown {get => _isKnown;}
+        public Symbol Implication { get => _implication; }
+
+        public List<Symbol> LeftSide
+        {
+            get => _leftSide.Values.ToList();
+        }
 
         public List<Symbol> Symbols
         {
@@ -83,7 +89,7 @@ namespace InferenceEngine
 
             // Evaluate logic
             if (IsKnown)
-                return _implication.Value; // Is known is single symbol statement.
+                return symbols.Find(s => s.Name == _implication.Name).Value; // Is known is single symbol statement.
             else
             {
                 // All left side true?
