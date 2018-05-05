@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackwardsChainingInference.cs" />
+    <Compile Include="ForwardsChainingInference.cs" />
+    <Compile Include="InferenceMethod.cs" />
+    <Compile Include="Permutator.cs" />
     <Compile Include="Sentence.cs" />
     <Compile Include="InferenceInput.cs" />
     <Compile Include="KnowledgeBase.cs" />
@@ -49,6 +53,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Symbol.cs" />
+    <Compile Include="TruthTableInference.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

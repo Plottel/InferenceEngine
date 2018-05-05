@@ -8,24 +8,50 @@ namespace InferenceEngine
 {
     public class KnowledgeBase
     {
-        private List<Sentence> _knowledgeClauses = 
-            new List<Sentence>();
+        private List<Sentence> _knowledge = new List<Sentence>();
+        private Dictionary<string, Symbol> _symbols = new Dictionary<string, Symbol>();
+        private InferenceMethod _method;
+
+        public List<Sentence> Knowledge { get => _knowledge; }
+        public Dictionary<string, Symbol> Symbols { get => _symbols; }
 
         public void Tell(string clauseString)
         {
-            _knowledgeClauses.Add(new Sentence(clauseString));
+            var newSentence = new Sentence(clauseString);
+            
+            foreach (var symbol in newSentence.Symbols) 
+            {
+                if (!_symbols.ContainsKey(symbol.Name)) {
+                    _symbols[symbol.Name] = symbol;
+                }
+            }
+
+            _knowledge.Add(newSentence);
         }
 
         public void Ask(string clauseString)
         {
-            
+            Console.WriteLine(_method.Ask(new Symbol(clauseString, true), this));
         }
 
         public void Print()
         {
             Console.WriteLine("-- KNOWLEDGE BASE --");
             Console.WriteLine("");
-            Console.WriteLine("Knowledge Clauses");
+            Console.WriteLine("Knowledge Sentences");
+
+            foreach (var sentence in _knowledge) {
+                sentence.Print();
+            }
+
+            Console.WriteLine("All Symbols");
+
+            string symbols = "";
+
+            foreach (var symbol in _symbols.Keys)
+                symbols += symbol + ";";
+
+            Console.WriteLine(symbols);
         }
     }
 }

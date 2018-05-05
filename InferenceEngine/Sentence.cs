@@ -16,6 +16,20 @@ namespace InferenceEngine
 
         public bool IsKnown {get => _isKnown;}
 
+        public List<Symbol> Symbols
+        {
+            get
+            {
+                var result = new List<Symbol> { _implication };
+
+                if (!IsKnown) {
+                    result.AddRange(_leftSide.Values);
+                }
+
+                return result;
+            }
+        }
+
         public Sentence(string clauseString)
         {
             _string = clauseString;
@@ -96,7 +110,27 @@ namespace InferenceEngine
                 if (!left)
                     return true;
                 else
-                    return right;
+                    return right;   
+            }
+        }
+
+        public void Print()
+        {
+            if (IsKnown)
+                Console.WriteLine(_implication.Name + " is known");
+            else 
+            {
+                string print = "";
+
+                foreach (var symbol in _leftSide) {
+                    print += symbol.Key + "&";
+                }
+
+                print = print.Remove(print.Length - 1); // Remove extra "&"
+
+                print += "=>" + _implication.Name;
+
+                Console.WriteLine(print);
             }
         }
     }

@@ -12,15 +12,7 @@ namespace InferenceEngine
         static void Main(string[] args)
         {
             //var fileLines = File.ReadAllLines(args[0]);
-            var input = Parser.ParseInferenceInput("C:/Users/mattn/Desktop/InferenceEngine/InferenceEngine/bin/Debug/test1.txt");
-
-            Console.WriteLine("Knowledge Base:");
-            foreach (var clause in input.knowledgeClauses) {
-                Console.WriteLine("- " + clause);
-            }
-
-            Console.WriteLine("Query:");
-            Console.WriteLine(input.queryClause);
+            InferenceInput input = Parser.ParseInferenceInput("C:/Users/mattn/Desktop/InferenceEngine/InferenceEngine/bin/Debug/test1.txt");
 
             var kb = new KnowledgeBase();
 
@@ -28,7 +20,9 @@ namespace InferenceEngine
                 kb.Tell(clause);
             }
 
-            kb.Print();
+            kb.Ask(input.queryClause);
+
+            //kb.Print();
 
             Console.ReadLine();
         }
