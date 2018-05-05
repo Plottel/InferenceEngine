@@ -29,8 +29,15 @@ namespace InferenceEngine
             _knowledge.Add(newSentence);
         }
 
-        public void Ask(string clauseString)
+        public void Ask(string clauseString, string methodName)
         {
+            if (methodName == "TT")
+                _method = new TruthTableInference();
+            else if (methodName == "FC")
+                _method = new ForwardsChainingInference();
+            else if (methodName == "BC")
+                _method = new BackwardsChainingInference();
+
             Console.WriteLine(_method.Ask(new Symbol(clauseString, true), this));
         }
 

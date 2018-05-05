@@ -20,9 +20,7 @@ namespace InferenceEngine
                 kb.Tell(clause);
             }
 
-            kb.Ask(input.queryClause);
-
-            //kb.Print();
+            kb.Ask(input.queryClause, "TT");
 
             Console.ReadLine();
         }

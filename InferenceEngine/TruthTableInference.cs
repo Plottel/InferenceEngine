@@ -14,13 +14,13 @@ namespace InferenceEngine
 
             var symbols = kb.Symbols.Values.ToList();
 
-            var p = new Permutator(symbols);
+            // Determine which models are valid.
+            foreach (var symbolCombination in GetAllSymbolCombinations(kb)) {
+                SetSymbolValues(symbols, symbolCombination);
 
-            // Get all valid models.
-            while (p.GetNextPermutation() != null) {
                 if (IsValidModel(kb, symbols))
                     validModels.Add(symbols);
-            }
+            }        
 
             // Query is true if the query symbol is true in ALL valid models.
             foreach (var validSymbols in validModels) {
@@ -43,6 +43,34 @@ namespace InferenceEngine
             }
 
             return true;
+        }
+
+        private void SetSymbolValues(List<Symbol> symbols, List<bool> values)
+        {
+            for (int i = 0; i < symbols.Count; ++i) {
+                symbols[i].Value = values[i];
+            }
+        }
+
+        private List<List<bool>> GetAllSymbolCombinations(KnowledgeBase kb)
+        {
+            var result = new List<List<bool>>();
+
+            // Adopted From: 
+            // https://stackoverflow.com/questions/39734887/generating-all-possible-true-false-combinations
+            int numVars = kb.Symbols.Count;
+
+            for (int i = 0; i < (1 << numVars); ++i) {
+                var combination = new List<bool>();
+
+                for (int j = numVars - 1; j >= 0; --j) {
+                    combination.Add((i & (1 << j)) != 0);
+                }
+
+                result.Add(combination);
+            }
+
+            return result;
         }
     }
 }
