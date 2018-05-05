@@ -30,7 +30,7 @@ namespace InferenceEngine
             _kb = kb;
             _path = new List<string>();
 
-            if (SymbolIsKnown(query)) {
+            if (kb.SymbolIsKnown(query)) {
                 return "YES: " + query.Name;
             }
 
@@ -45,7 +45,7 @@ namespace InferenceEngine
         {
             _path.Insert(0, s.Name);
 
-            if (SymbolIsKnown(s)) {
+            if (_kb.SymbolIsKnown(s)) {
                 return true;
             }
 
@@ -56,20 +56,7 @@ namespace InferenceEngine
             }
 
             return true;
-        }
-
-        private bool SymbolIsKnown(Symbol s)
-        {
-            foreach (var sentence in _kb.Knowledge) {
-                if (sentence.IsKnown) {
-                    if (sentence.Implication.Name == s.Name) {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
+        }       
 
         private List<Symbol> GetSymbolsImplying(Symbol s)
         {

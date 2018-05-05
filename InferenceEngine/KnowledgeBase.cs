@@ -41,6 +41,19 @@ namespace InferenceEngine
             Console.WriteLine(_method.Ask(new Symbol(clauseString, true), this));
         }
 
+        public bool SymbolIsKnown(Symbol s)
+        {
+            foreach (var sentence in Knowledge) {
+                if (sentence.IsKnown) {
+                    if (sentence.Implication.Name == s.Name) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         public void Print()
         {
             Console.WriteLine("-- KNOWLEDGE BASE --");
