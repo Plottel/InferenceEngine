@@ -45,7 +45,6 @@
     <Compile Include="BackwardsChainingInference.cs" />
     <Compile Include="ForwardsChainingInference.cs" />
     <Compile Include="InferenceMethod.cs" />
-    <Compile Include="Permutator.cs" />
     <Compile Include="Sentence.cs" />
     <Compile Include="InferenceInput.cs" />
     <Compile Include="KnowledgeBase.cs" />
