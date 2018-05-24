@@ -1,3 +1,5 @@
+All source code and commit history available at https://github.com/Plottel/InferenceEngine
+
 The .exe can be found at InferenceEngine/bin/Debug
 
 The .exe needs to be run from the command line, with 2 parameters passed:
